@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { IoMdAdd } from "react-icons/io";
 
-function AddNote({ onAdd }) {
+function AddNote({ onAdd, maxChars = 200 }) {
   const [input, setInput] = useState("");
 
   const handleInputChange = (e) => {
@@ -22,9 +23,15 @@ function AddNote({ onAdd }) {
         placeholder="Enter todo item"
         rows="4"
         cols="50"
+        maxLength={maxChars}
       />
-      <button className="add-btn" onClick={handleAdd}>
-        Add
+
+      <div className="char-count">
+        {input.length} / {maxChars}
+      </div>
+
+      <button className="add-btn" onClick={handleAdd} disabled={!input.trim()}>
+        <IoMdAdd />
       </button>
     </div>
   );

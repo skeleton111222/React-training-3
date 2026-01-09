@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-
+import { GrUpdate } from "react-icons/gr";
+import { IoIosSave } from "react-icons/io";
+import { MdCancel } from "react-icons/md";
 function UpdateNote({ onUpdate, todo, id }) {
   const [newTodo, setNewTodo] = useState(todo.text);
   const [isEditing, setIsEditing] = useState(false);
@@ -15,7 +17,7 @@ function UpdateNote({ onUpdate, todo, id }) {
     <div>
       {!isEditing ? (
         <button className="update-btn" onClick={() => setIsEditing(true)}>
-          Update
+          <GrUpdate />
         </button>
       ) : (
         <>
@@ -27,10 +29,10 @@ function UpdateNote({ onUpdate, todo, id }) {
           />
           <div className="button-group">
             <button className="save-btn" onClick={handleUpdate}>
-              Save
+              <IoIosSave />
             </button>
             <button className="cancel-btn" onClick={() => setIsEditing(false)}>
-              Cancel
+              <MdCancel />
             </button>
           </div>
         </>

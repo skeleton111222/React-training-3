@@ -5,7 +5,7 @@ import "./styles/index.css"; // Global CSS styles
 function App() {
   return (
     <div className="App">
-      <h3 className="to-do">To-Do</h3>
+      <h3 className="to-do">To-Do App</h3>
       <Todo />
     </div>
   );

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { nanoid } from "nanoid"; // import nanoid
 import AddNote from "./AddNote";
 import DisplayNotes from "./DisplayNotes";
+import Search from "./search.jsx";
+
 import "../styles/Todo.css";
 
 function Todo() {
@@ -52,12 +54,20 @@ function Todo() {
       )
     );
   };
+  // Search todo
+  const [filteredTodos, setFilteredTodos] = useState(todoList);
+  useEffect(() => {
+    setFilteredTodos(todoList);
+  }, [todoList]);
 
   return (
     <div className="todo-container">
       <AddNote onAdd={handleAdd} />
+
+      <Search todos={todoList} onSearchResult={setFilteredTodos} />
+
       <DisplayNotes
-        todos={todoList}
+        todos={filteredTodos}
         onDelete={handleDelete}
         onUpdate={handleUpdate}
       />
